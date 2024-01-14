@@ -12,21 +12,40 @@
     <h2>Lista produktów</h2>
   </blockquote>
 </figure>
-<div id="MainProductList row justify-content-center d-flex">
-	<div class="card mb-3" style="max-width: 540px;">
+<div class="container text-center">
+  <div id="AddNewProductForm" class="row justify-content-center d-flex" >
+    <form style="max-width: 700px;">
+      <div class="mb-3" >
+        <label for="exampleInputEmail1" class="form-label">Produkt:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" class="btn btn-primary">Dodaj</button>
+    </form>
+  </div>
+</div>
+<div class="container text-center">
+  <div id="MainProductList" class="row justify-content-center d-flex">
+   	<div class="card mb-3" style="max-width: 700px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="..." class="img-fluid rounded-start" alt="...">
+          <img src="" class="img-fluid rounded-start" alt="">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">Product title</h5>
+              <div class="row">
+                <div class="col-6">
+                  <input type="checkbox" class="" id="btncheck1" autocomplete="off">
+                  <label class="" for="btncheck1">Kupione</label>
+                </div>
+                <div class="col-6">
+                  <button type="submit" class="btn btn-danger">Usuń</button>
+                </div>
+              </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </div>
-
 {% endblock %}
