@@ -4,7 +4,18 @@ from django.shortcuts import render
 
 
 def index(request):
-
     context = {}
     return render(request, 'pages/index.html', context)
 
+def add_product(request):
+    context = {}
+    return render(request, 'pages/index.html', context)
+
+def delete_product(request):
+    context = {}
+    return render(request, 'pages/index.html', context)
+
+
+def mark_product(request):
+    context = {}
+    return render(request, 'pages/index.html', context)
