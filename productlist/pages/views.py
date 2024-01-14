@@ -1,18 +1,21 @@
 from django.shortcuts import render
 
-#from pages.models import PromotionPhoto, GeneralInfo, GalleryPhoto, FooterSliderImage
+from .models import Product
 
 
 def index(request):
-    context = {}
+    products = Product.objects.all()
+    context = {"products": products}
     return render(request, 'pages/index.html', context)
 
 def add_product(request):
     context = {}
     return render(request, 'pages/index.html', context)
 
-def delete_product(request):
-    context = {}
+def delete_product(request, id):
+    Product.objects.filter(id=id).delete()
+    products = Product.objects.all()
+    context = {"products": products}
     return render(request, 'pages/index.html', context)
 
 
