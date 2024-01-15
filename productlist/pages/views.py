@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Product
 
@@ -17,13 +17,13 @@ def add_product(request):
 
     products = Product.objects.all()
     context = {"products": products}
-    return render(request, 'pages/index.html', context)
+    return redirect('/')
 
 def delete_product(request, id):
     Product.objects.filter(id=id).delete()
     products = Product.objects.all()
     context = {"products": products}
-    return render(request, 'pages/index.html', context)
+    return redirect('/')
 
 
 def mark_product(request, id):
@@ -35,4 +35,4 @@ def mark_product(request, id):
     modified_product.save()  # this will update only
     products = Product.objects.all()
     context = {"products": products}
-    return render(request, 'pages/index.html', context)
+    return redirect('/')
