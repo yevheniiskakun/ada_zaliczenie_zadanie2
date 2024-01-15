@@ -16,11 +16,11 @@
 </figure>
 <div class="container text-center">
   <div id="AddNewProductForm" class="row justify-content-center d-flex" >
-    <form style="max-width: 700px;" method="POST" id="AddProductToListForm">
+    <form style="max-width: 700px;" method="POST" action="add_product" id="AddProductToListForm">
       {% csrf_token %}
       <div class="mb-3" >
         <label for="new_product" class="form-label">Produkt:</label>
-        <input type="text" class="form-control" id="new_product" aria-describedby="emailHelp" required>
+        <input type="text" class="form-control" id="new_product" name="new_product" aria-describedby="emailHelp" required>
       </div>
       <a href="{% url 'pages:add_product' %}">
         <button type="submit" class="btn btn-primary">Dodaj</button>

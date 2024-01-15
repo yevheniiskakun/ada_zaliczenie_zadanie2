@@ -10,18 +10,11 @@ def index(request):
 
 def add_product(request):
     if request.method == 'POST':
-        print(request.POST.get('new_product'))
-        '''
-        form = MyForm(request.POST)
+        new_product_name = request.POST.get('new_product')
 
-        print(form['my_field'].value())
-        print(form.data['my_field'])
+        if " " not in new_product_name:
+            Product.objects.create(name=new_product_name)
 
-        if form.is_valid():
-            print(form.cleaned_data['my_field'])
-            print(form.instance.my_field)
-            form.save()
-        '''
     products = Product.objects.all()
     context = {"products": products}
     return render(request, 'pages/index.html', context)
