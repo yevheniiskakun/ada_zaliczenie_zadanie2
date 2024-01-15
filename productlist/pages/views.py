@@ -12,7 +12,7 @@ def add_product(request):
     if request.method == 'POST':
         new_product_name = request.POST.get('new_product')
 
-        if " " not in new_product_name:
+        if "  " not in new_product_name:
             Product.objects.create(name=new_product_name)
 
     products = Product.objects.all()
