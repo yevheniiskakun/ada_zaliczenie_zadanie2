@@ -13,6 +13,11 @@ Jak uruchomić projekt:
 <python manage.py runserver>
 6. Odwiedzić stronę http://127.0.0.1:8000/
 
+Strona admina:
+http://127.0.0.1:8000/admin
+
+login i hasło: admin
+
 
 
 Start nowego projektu:
