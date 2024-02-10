@@ -1,0 +1,18 @@
+{% extends "pages/base_index.html" %}
+{% load static %}
+
+{% block meta_tags %}
+	<title>ADA Web App</title>
+{% endblock %}
+
+{% block content %}
+
+<div>
+
+</div>
+{% for image_url in CDN_URLs_list %}
+	<img src="{{image_url}}" alt="Image">
+{% endfor %}
+
+
+{% endblock %}
