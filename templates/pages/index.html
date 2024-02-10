@@ -11,7 +11,7 @@
 	<form method="post" action="" enctype="multipart/form-data">
     	{% csrf_token %}
 		{{ new_image_form }}
-    	<input type="submit" value="Save">
+    	<input type="submit" value="Save" class="btn btn-primary">
 	</form>
 </div>
 
@@ -19,7 +19,11 @@
 	{% for image_url in CDN_URLs_list %}
 		<img src="{{image_url}}" alt="Image" class="rounded img-fluid mx-auto my-3" style=" width: 100%;">
 		<div>
-
+			<form method="post" action="delete_image">
+				{% csrf_token %}
+				<input id="" type="hidden" name="image_url" value="{{ image_url }}">
+				<input class="btn btn-danger" type="submit" value="Delete">
+			</form>
 		</div>
 	{% endfor %}
 </div>

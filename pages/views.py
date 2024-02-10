@@ -1,7 +1,7 @@
 import os
 
 from django.core.serializers import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
@@ -76,16 +76,32 @@ def upload_Blob_StorageAccount(file):
     send_logs_CosmosDB(f"blob with name: {file_upload_name} was uploaded")
 
 
+def delete_image(request):
+    if request.method == 'POST':
+        image_url = request.POST.get("image_url")
+        blob_name = image_url.split("/")[-1]
+        print(blob_name)
+        blob_service_client = BlobServiceClient.from_connection_string(get_AzureKV_secret("storagecredentials"),
+                                                                       logging_enable=True)
+        blob_client = blob_service_client.get_blob_client(container="media", blob=blob_name)
+        blob_client.delete_blob()
+
+        send_logs_CosmosDB(f"blob with name: {blob_name} was deleted")
+
+    return redirect('/')
+
+
 def index(request):
     CDN_URLs_list = create_CDN_URLs()
+
     if request.POST:
         new_image_form = ImageForm(request.POST, request.FILES)
-        print(new_image_form.is_valid())
-        print(request.FILES)
         if new_image_form.is_valid():
             upload_Blob_StorageAccount(request.FILES["image"])
-            print("request.FILES" + (request.FILES["image"]).name)
     new_image_form = ImageForm()
+
     context = {"CDN_URLs_list": CDN_URLs_list, "new_image_form": new_image_form}
+
     send_logs_CosmosDB("page was loaded")
+
     return render(request, 'pages/index.html', context)
