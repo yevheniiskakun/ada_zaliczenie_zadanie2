@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div id="AddNewImage">
+<div id="AddNewImage" class="mx-auto my-3" style="max-width: 500px;">
 	<form method="post" action="" enctype="multipart/form-data">
     	{% csrf_token %}
 		{{ new_image_form }}
